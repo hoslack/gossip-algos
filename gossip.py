@@ -22,6 +22,7 @@ def gossip_minimum(graph):
 
 def gossip_mininum_test():
     net = make_graph(guess=100000)
+    print gossip_minimum(net)
 
 def gossip_sum(graph):
     #each node has a value and its own guess for minimum
@@ -34,3 +35,4 @@ def gossip_sum(graph):
 
 def gossip_sum_test():
     net = make_graph(guess=0)
+    print gossip_sum(net)
