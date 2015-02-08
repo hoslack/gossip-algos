@@ -1,2 +1,2 @@
-Gossip algorithms, as crappily as possible
+Gossip algorithms, as simply as possible
 ===

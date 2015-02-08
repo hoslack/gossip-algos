@@ -18,7 +18,7 @@ def make_graph(guess=0):
     net.add_edges_from([(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,1),(1,4),(5,3)])
     return net
 
-def gossip_minimum(graph, steps=5000):
+def gossip_minimum(graph, steps=10):
     for i in xrange(steps):
         edge = random.choice(graph.edges())
         node1, node2 = graph.nodes(data=True)[edge[0]-1], graph.nodes(data=True)[edge[1]-1]
@@ -30,8 +30,7 @@ def gossip_minimum(graph, steps=5000):
             node1[1]["guess"] = node2[1]["guess"]
         if node2[1]["guess"] > node1[1]["guess"]:
             node2[1]["guess"] = node1[1]["guess"]
-        print node1, node2
-    mins = []
+    mins = [node[1]["guess"] for node in graph.nodes(data=True)]
     return mins
 
 def gossip_minimum_test():
