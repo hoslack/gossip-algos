@@ -1,5 +1,9 @@
 using Graphs
 
+#the whole graph is local, which is quite annoying
+#but is interesting enough.
+#a next step is to turn this parallel.
+
 function gossip_minimum(graph)
   #each node has a value and its own guess for minimum
   #at each point, the node takes a random neighbor and
