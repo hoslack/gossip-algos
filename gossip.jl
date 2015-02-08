@@ -11,6 +11,13 @@ function gossip_minimum(graph)
 end
 
 function gossip_minimum_test(graph)
+  test_graph = simple_graph(4)
+  #seems pretty much the case that this requires ergodic mat
+  add_edge!(test_graph, Edge{Int}(0,1,2))
+  add_edge!(test_graph, Edge{Int}(0,2,3))
+  add_edge!(test_graph, Edge{Int}(0,3,4))
+  add_edge!(test_graph, Edge{Int}(0,4,1))
+  println(gossip_minimum(test_graph))
 end
 
 function gossip_sum(graph)
