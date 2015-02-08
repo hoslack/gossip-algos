@@ -17,21 +17,25 @@ def make_graph(guess=0):
     net.add_edges_from([(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,1),(1,4),(5,3)])
     return net
 
-def gossip_minimum(graph):
-    pass
+def gossip_minimum(graph, steps=1000):
+    for i in xrange(steps):
+        pass
+    return mins
 
 def gossip_mininum_test():
     net = make_graph(guess=100000)
     print gossip_minimum(net)
 
-def gossip_sum(graph):
+def gossip_sum(graph, steps=1000):
     #each node has a value and its own guess for minimum
     #at each point, the node takes a random neighbor and
     #compare the guess it has and its neighbor's guess and take min
     #then generate some random numbers according to exponential distribution
     #then actually say that the mean is the estimator,
     #due to properties of the exponential distribution. hey! you have mean, so you have sum!
-    pass
+    for i in xrange(steps):
+        pass
+    return sums
 
 def gossip_sum_test():
     net = make_graph(guess=0)
