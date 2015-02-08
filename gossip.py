@@ -1,5 +1,6 @@
 import numpy as np
 import networkx as nx
+import random
 
 #the whole graph is local, which is quite annoying
 #but is interesting enough.
@@ -17,12 +18,23 @@ def make_graph(guess=0):
     net.add_edges_from([(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,1),(1,4),(5,3)])
     return net
 
-def gossip_minimum(graph, steps=1000):
+def gossip_minimum(graph, steps=5000):
     for i in xrange(steps):
-        pass
+        edge = random.choice(graph.edges())
+        node1, node2 = graph.nodes(data=True)[edge[0]-1], graph.nodes(data=True)[edge[1]-1]
+        if node1[1]["guess"] > node2[1]["val"]:
+            node1[1]["guess"] = node2[1]["val"]
+        if node2[1]["guess"] > node1[1]["val"]:
+            node2[1]["guess"] = node1[1]["val"]
+        if node1[1]["guess"] > node2[1]["guess"]:
+            node1[1]["guess"] = node2[1]["guess"]
+        if node2[1]["guess"] > node1[1]["guess"]:
+            node2[1]["guess"] = node1[1]["guess"]
+        print node1, node2
+    mins = []
     return mins
 
-def gossip_mininum_test():
+def gossip_minimum_test():
     net = make_graph(guess=100000)
     print gossip_minimum(net)
 
@@ -33,10 +45,14 @@ def gossip_sum(graph, steps=1000):
     #then generate some random numbers according to exponential distribution
     #then actually say that the mean is the estimator,
     #due to properties of the exponential distribution. hey! you have mean, so you have sum!
-    for i in xrange(steps):
-        pass
-    return sums
+    mins = gossip_minimum(graph, steps)
+    pass
+    #r = calculate r
+    #return [something for somthing in something]
 
 def gossip_sum_test():
     net = make_graph(guess=0)
     print gossip_sum(net)
+
+if __name__ == "__main__":
+    gossip_minimum_test()
